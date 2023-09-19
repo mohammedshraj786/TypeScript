@@ -1,20 +1,18 @@
-//Form Todo....
+// TodoForm.js
 
 import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-interface Task 
-{
+interface Task {
   id: number;
   text: string;
   completed: boolean;
 }
 
-function TodoForm()
- {
-  const apiUrl = 'https://2e87-103-156-100-11.ngrok-free.app';
+function TodoForm() {
+  const apiUrl = 'https://a248-103-156-100-11.ngrok-free.app';
   const [taskText, setTaskText] = useState('');
   const [message, setMessage] = useState('');
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -23,7 +21,7 @@ function TodoForm()
   const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTaskText(e.target.value);
   };
-//adding task
+
   const addTask = async () => {
     if (!taskText.trim()) {
       setMessage('Enter any task to store in the list');
@@ -55,7 +53,7 @@ function TodoForm()
       setMessage('');
     }, 1000);
   };
-//getting task
+
   const fetchTasksFromAPI = async () => {
     try {
       const response = await fetch(`${apiUrl}/dataGet`, {
@@ -77,7 +75,8 @@ function TodoForm()
 
           setTasks(tasksArray);
           setShowTaskList(true);
-        } else {
+        } 
+        else {
           console.error('Invalid API response format or missing taskDatas array.');
         }
       } else {
@@ -92,7 +91,7 @@ function TodoForm()
 
     fetchTasksFromAPI();
   }, []);
-//deleting task
+
   const handleTaskDelete = async (id: number) => {
     const trimmedId = String(id).trim();
 
@@ -106,7 +105,8 @@ function TodoForm()
       });
 
       if (response.ok) {
-        setMessage('Your task Is deleted Successfully');
+        // setMessage('Your task Is deleted Successfully');
+        
         fetchTasksFromAPI(); 
       } else {
         console.error('Failed to delete the task');
@@ -146,12 +146,10 @@ function TodoForm()
       {showTaskList && (
         <div id="task-list">
           <TodoList tasks={tasks} onTaskDelete={handleTaskDelete} />
-          {/* <TodoList tasks={tasks} onTaskDelete={handleTaskDelete} fetchTasksFromAPI={fetchTasksFromAPI} /> */}
         </div>
       )}
     </div>
   );
 }
-
 
 export default TodoForm;

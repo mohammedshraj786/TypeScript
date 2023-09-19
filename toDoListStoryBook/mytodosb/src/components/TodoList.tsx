@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
+import SimpleSnackbar  from './snackbar';
 
 interface Task {
   id: number;
@@ -23,12 +24,12 @@ const TodoList: React.FC<TodoListProps> = ({ tasks, onTaskDelete }) => {
     <List>
       {tasks.map((task) => (
         <ListItem key={task.id}>
-          {/* <Checkbox checked={task.completed} /> */}
-          <Checkbox style={ {textDecoration:"line-through"}   }></Checkbox>
+          <Checkbox checked={task.completed} />
           <ListItemText primary={task.text} />
           <Button variant="contained" onClick={() => onTaskDelete(task.id)}>
             Delete
           </Button>
+          {/* <SimpleSnackbar/> */}
         </ListItem>
       ))}
     </List>

@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 function Header() {
   return (
-    <Box display="flex" justifyContent="center" id="header">
+    <Box display="flex" justifyContent="center">
       <AppBar position="static">
         <Toolbar>
         <IconButton

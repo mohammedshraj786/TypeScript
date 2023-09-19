@@ -25,25 +25,21 @@
 
 // export default App;
 
-
 import './App.css';
 import Header  from './components/header';
 import TodoForm from './components/todoForm'; 
-import Footer from './components/footer';
 
 
 function App()
  {
   return (
     <div className="App">
-    <div ><Header/></div>
-      <main>
-      <TodoForm />
-      </main>
-   <div><Footer/></div>
+                                                 <div ><Header/></div>
+                          <main>
+                                 <TodoForm />
+                          </main>
+      
     </div>
- 
-
   );
 }
 
