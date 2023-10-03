@@ -1,0 +1,47 @@
+iframe#webpack-dev-server-client-overlay{display:none!important}
+.Card {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-direction: row !important;
+  }
+  
+  .Card > div {
+    flex: auto;
+    max-width: calc(25% - 20px); 
+    margin: 10px; 
+  }
+
+.App
+{
+  background-color: #F5F5F5;
+
+}
+body
+{
+     background-color:#F5F5F5;
+}
+
+.LoadingMessage
+{
+  text-align: center;
+  font-size: 20px;
+  font-family: system-ui;
+color:black;
+}
+.ErrorMessage
+{
+  text-align: center;
+  font-size: 20px;
+  font-family: system-ui;
+  color: red;
+  
+}
+/* .NoDataMessage
+{
+  text-align: center;
+  font-size: 20px;
+  font-family: system-ui;
+color:black; 
+} */
