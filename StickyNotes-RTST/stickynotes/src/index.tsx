@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import { NoteProvider } from './components/noteContext/NoteContext';
-
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     {/* <NoteProvider> */}
+    <QueryClientProvider client={queryClient}>
     <App />
+    </QueryClientProvider>
     {/* </NoteProvider> */}
   </React.StrictMode>
 );
