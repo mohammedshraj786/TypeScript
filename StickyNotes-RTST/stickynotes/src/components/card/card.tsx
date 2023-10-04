@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
-import DeleteOutlinedIcon from "@mui/icons-material/Delete";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Box, Button } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import TextField from "@mui/material/TextField";
@@ -13,11 +13,13 @@ import MuiAlert from "@mui/material/Alert";
 import "./card.css";
 
 export interface NoteCardProps {
+  _id: string;
   taskData: string;
-  stickynotes: string;
   color: string;
-  onAddNote: (description: string) => void;
+  stickynotes: string;
+  onAddNote: (stickynotes: string) => void;
   onDeleteTask: () => void;
+  isDataFetching: boolean; // Pass the isDataFetching prop
 }
 
 const NoteCard: React.FC<NoteCardProps> = ({
@@ -25,6 +27,7 @@ const NoteCard: React.FC<NoteCardProps> = ({
   color,
   onAddNote,
   onDeleteTask,
+  isDataFetching,
 }) => {
   const [description, setDescription] = useState(stickynotes);
   const [deleteSnackbarOpen, setDeleteSnackbarOpen] = useState<boolean>(false);
@@ -70,41 +73,41 @@ const NoteCard: React.FC<NoteCardProps> = ({
     >
       <CardContent>
         <Box>
-   
-  <TextField
-    inputProps={{
-      style: {
-        color: "#000000",
-        fontSize: "20px",
-        fontFamily: "system-ui",
-        textOverflow: "auto",
-        overflow: "auto", 
-      },
-    }}
-    multiline
-    value={description}
-    placeholder="stickynote"
-    onChange={handleChange}
-    rows={maxRows}
-    variant="standard"
-    color="info"
-  />
-
-
+          <TextField
+            inputProps={{
+              style: {
+                color: "#000000",
+                fontSize: "20px",
+                fontFamily: "system-ui",
+                textOverflow: "auto",
+                overflow: "auto",
+              },
+            }}
+            multiline
+            value={description}
+            placeholder="stickynote"
+            onChange={handleChange}
+            rows={maxRows}
+            variant="standard"
+            color="info"
+          />
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "end" }}>
-          <Tooltip title="Add Notes" placement="top">
-            <IconButton
-              sx={{ color: "#003300", marginTop: "70px" }}
-              onClick={handleAddNoteClick}
-            >
-              <AddCircleOutlineOutlinedIcon fontSize="medium" />
-            </IconButton>
-          </Tooltip>
+          {/* Conditionally render the "Add" icon */}
+          {!isDataFetching && !stickynotes && (
+            <Tooltip title="Add Notes" placement="top">
+              <IconButton
+                sx={{ color: "#003300", marginTop: "70px" }}
+                onClick={handleAddNoteClick}
+              >
+                <AddCircleOutlineOutlinedIcon fontSize="medium" />
+              </IconButton>
+            </Tooltip>
+          )}
 
           <Tooltip title="Edit" placement="top">
-            <IconButton sx={{ color: "blue" , marginTop:"70px"}}>
+            <IconButton sx={{ color: "blue", marginTop: "70px" }}>
               <EditNoteOutlinedIcon fontSize="medium" />
             </IconButton>
           </Tooltip>
@@ -152,3 +155,4 @@ const NoteCard: React.FC<NoteCardProps> = ({
 };
 
 export default NoteCard;
+
