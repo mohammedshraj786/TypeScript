@@ -1,5 +1,5 @@
 // import React from 'react';
-// import logo from './logo.svg';
+// import logo from './logo.svg';-
 // import './App.css';
 
 // function App() {
@@ -36,11 +36,13 @@ function App()
  {
   return (
     <div className="App">
+      
     <div ><Header/></div>
       <main>
       <TodoForm />
       </main>
    <div><Footer/></div>
+
     </div>
  
 
