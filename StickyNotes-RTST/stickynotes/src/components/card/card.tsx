@@ -19,7 +19,7 @@ export interface NoteCardProps {
   stickynotes: string;
   onAddNote: (stickynotes: string) => void;
   onDeleteTask: () => void;
-  isDataFetching: boolean; // Pass the isDataFetching prop
+  isDataFetching: boolean; 
 }
 
 const NoteCard: React.FC<NoteCardProps> = ({
